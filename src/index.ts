@@ -2,22 +2,22 @@ import clippingParser from './methods/clippingParser'
 import noteMerge from './methods/noteMerge'
 import clippingPathInit from './methods/clippingPathInit'
 import path from 'path'
-import { Note, NoteMerged, kindleClipping } from '../types'
+import type { KindleClippingParser } from '../types'
 
-class Main implements kindleClipping.NoteMain {
-    clippingPath?: string
+class Main implements KindleClippingParser {
+    clippingPath: string
 
     constructor(customPath = '') {
-        this.clippingPath = customPath && path.resolve(__dirname, customPath)
+        this.clippingPath = customPath ? path.resolve(__dirname, customPath) : clippingPathInit()
     }
 
-    getJson(): Note[] {
-        return clippingParser(this.clippingPath || clippingPathInit())
+    getJson() {
+        return clippingParser(this.clippingPath)
     }
 
-    getMergedJson(): (NoteMerged | Note)[] {
+    getMergedJson() {
         return noteMerge(
-            clippingParser(this.clippingPath || clippingPathInit())
+            clippingParser(this.clippingPath)
         )
     }
 }

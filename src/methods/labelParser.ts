@@ -1,5 +1,5 @@
 import { highlightRegex, noteRegex, addRegex } from "../const/note_type";
-import { Label, LabelRaw } from "../../types";
+import type { Label, LabelRaw } from "../../types";
 
 function labelParser(label: string): Label {
   const numberRegex = /[0-9]+/;
@@ -13,7 +13,7 @@ function labelParser(label: string): Label {
   if (noteRegex.test(pageTypeText)) {
     type = "Note";
   }
-
+  
   const page = pageTypeText.match(numberRegex)?.[0] || '';
   const location = locationText.match(numberRegex)?.[0] || '';
   const date = dateText.replace(addRegex, '').trim()

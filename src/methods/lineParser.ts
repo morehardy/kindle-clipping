@@ -1,4 +1,4 @@
-import { Note, NoteOriginal } from "../../types";
+import type { Note, NoteOriginal } from "../../types";
 import labelParser from "./labelParser"
 
 function lineParser(data: NoteOriginal): Note {

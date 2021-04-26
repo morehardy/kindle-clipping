@@ -1,6 +1,6 @@
 import fs from 'fs'
 import lineParser from './lineParser'
-import { Note } from '../../types'
+import type { Note } from '../../types'
 
 function clippingParser(path: string): Note[] {
     const exist = fs.existsSync(path)

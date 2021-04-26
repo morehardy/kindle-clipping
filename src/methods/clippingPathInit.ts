@@ -13,5 +13,5 @@ export default function initClippingPath(): string {
     } else if (osType === 'Darwin') {
         return path.resolve(__dirname, MAC_PATH)
     }
-    return ''
+    throw new Error('unSupport os')
 }

@@ -1,4 +1,4 @@
-import { NoteMerged, Note } from '../../types'
+import type { NoteMerged, Note } from '../../types'
 
 function mergeNote(notes: Note[]): (Note | NoteMerged)[] {
     const newNotes: (Note | NoteMerged)[] = []
