@@ -13,6 +13,4 @@ test("clipping parser", () => {
   expect(
     clippingParser(path.resolve(__dirname, "./lib/clippings.txt"))
   ).toBeDefined();
-
-  console.log(clippingParser(path.resolve(__dirname, "./lib/clippings.txt")))
 });
