@@ -8,9 +8,15 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "eslint src/**",
-    "dev": "rollup -c -w"
+    "start": "rollup -c -w"
   },
-  "keywords": ["kindle", "clippings", "parser", "note", "highlight"],
+  "keywords": [
+    "kindle",
+    "clippings",
+    "parser",
+    "note",
+    "highlight"
+  ],
   "author": "hardy",
   "license": "MIT",
   "repository": {
