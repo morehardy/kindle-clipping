@@ -47,7 +47,7 @@ declare namespace kindleClippingParser {
     /**
      * getMergedJson returns an array of combined notes and annotation objects
      * ```
-     * KindleClippingParser().getMergedJson() // [{bookName:'Mindset (Carol Dweck)',content:'As a contrast, let’s look',type:'Highlight',page:'37',location:'565',date:'Friday, February 19, 2021 6:06:48 PM'}]
+     * KindleClippingParser().getMergedJson() // [{bookName:'Mindset (Carol Dweck)',content:'excellence—whose greatness',type:'Note',page:'37',location:'565',date:'Friday, February 19, 2021 6:06:48 PM',note:'As a contrast, let’s look'}]
      * ```
      */
     public getMergedJson: () => (NoteMerged | Note)[]
