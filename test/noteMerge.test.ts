@@ -48,6 +48,4 @@ test('note', () => {
       date: '2017年8月15日星期二 上午12:07:02'
     }
   ])
-
-  console.log(noteMerge(clippingJson))
 });
