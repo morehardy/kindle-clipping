@@ -52,8 +52,6 @@ declare namespace kindleClipping {
   }
 }
 
-export default kindleClippingParser.KindleClipping
-
 declare function kindleClipping(): kindleClipping.KindleClipping
 
 export = kindleClipping
