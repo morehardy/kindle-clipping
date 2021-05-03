@@ -1,13 +1,19 @@
 <h1 align="center">Kindle-Clipping</h1>
 
 <p align="center">
-<img src="https://img.shields.io/badge/npm-v0.5-519dd9.svg" alt="version">
+<img src="https://img.shields.io/badge/npm-v1.0.2-519dd9.svg" alt="version">
 <img src="https://img.shields.io/codecov/c/github/morehardy/kindle-clipping/coverage.svg?style=flat-square" alt="coverage">
 <img src="https://img.shields.io/github/license/morehardy/kindle-clipping" alt="license">
 
 </p>
 
 > kindle-clipping is a minimalist JavaScript library to parse kindle clippings.txt to json, manage your note and highlight.
+
+
+- 4kb mini library
+- 简体中文 / English document support
+- note & highlight merge
+- find clipping.txt automatically
 
 ## Getting Started
 
@@ -16,8 +22,27 @@
 ```console
 npm install kindle-clipping --save
 ```
+
+### Import
+
+```javascript
+import kindleClipping from 'kindle-clipping'
+
+const kindleClipping = require('kindle-clipping')
+
+```
+
 ### API
 
+#### init
+
+```javascript
+// get kindle clippings.txt by default path
+kindleClipping()
+
+// get kindle clippings.txt by custom path
+kindleClipping(customPath)
+```
 #### getJson()
 ```javascript
 kindleClipping().getJson() // get an array of unprocessed notes and highlight objects
@@ -50,7 +75,6 @@ kindleClipping().getMergedJson() // getMergedJson returns an array of combined n
 //   }
 // ]
 ```
-
 
 
 ## License
