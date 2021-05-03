@@ -1,4 +1,4 @@
-/* kindle clipping 1.0.0 MTI 2.0 */
+/* kindle clipping 0.5.0 MTI 2.0 */
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -103,21 +103,19 @@ function initClippingPath() {
     else if (osType === 'Darwin') {
         return path.resolve(__dirname, MAC_PATH);
     }
-    return '';
+    throw new Error('unSupport os');
 }
 
-// clippingParser(path.resolve(__dirname, '../test/clippings.txt'))
 class Main {
     constructor(customPath = '') {
-        this.clippingPath = customPath && path.resolve(__dirname, customPath);
+        this.clippingPath = customPath ? path.resolve(__dirname, customPath) : initClippingPath();
     }
     getJson() {
-        return clippingParser(this.clippingPath || initClippingPath());
+        return clippingParser(this.clippingPath);
     }
     getMergedJson() {
-        return mergeNote(clippingParser(this.clippingPath || initClippingPath()));
+        return mergeNote(clippingParser(this.clippingPath));
     }
 }
-console.log(new Main('../test/lib/clippings.txt').getMergedJson());
 
 export default Main;

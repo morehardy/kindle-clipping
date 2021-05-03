@@ -15,7 +15,7 @@ const banner = "/* kindle clipping " + version + " MTI 2.0 */";
  */
 export default [
   {
-    input: "src/main.ts",
+    input: "src/index.ts",
     output: [
       { banner: banner, file: "builds/kindleClipping.mjs", format: "esm" },
     ],
@@ -32,7 +32,7 @@ export default [
     ],
   },
   {
-    input: "src/main.ts",
+    input: "src/index.ts",
     output: [
       { banner: banner, file: "builds/kindleClipping.cjs", format: "cjs" },
     ],
@@ -49,7 +49,7 @@ export default [
     ],
   },
   {
-    input: "src/main.ts",
+    input: "src/index.ts",
     output: [
       { banner: banner, file: "builds/kindleClipping.min.js", format: "umd", name: "kindleClipping" },
     ],
