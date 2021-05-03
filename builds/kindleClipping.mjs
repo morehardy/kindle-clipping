@@ -1,4 +1,4 @@
-/* kindle clipping 0.6.0 MTI 2.0 */
+/* kindle clipping 1.0.3 MTI 2.0 */
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -93,7 +93,7 @@ function mergeNote(notes) {
     return newNotes;
 }
 
-const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt';
+const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt';
 const osType = os.type();
 function initClippingPath() {
     if (osType === 'Windows_NT') {

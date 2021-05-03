@@ -2,7 +2,7 @@ import os from 'os'
 import fs from 'fs'
 import path from 'path'
 
-const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt'
+const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt'
 const osType = os.type()
 
 export default function initClippingPath(): string {
