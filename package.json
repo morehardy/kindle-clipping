@@ -1,6 +1,6 @@
 {
   "name": "kindle-clipping",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "parse kindle clippings.txt to json, manage your note and highlight.",
   "main": "builds/kindleClipping.min.js",
   "module": "builds/kindleClipping.mjs",
