@@ -1,4 +1,4 @@
-/* kindle clipping 0.5.0 MTI 2.0 */
+/* kindle clipping 0.6.0 MTI 2.0 */
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
@@ -93,17 +93,26 @@ function mergeNote(notes) {
     return newNotes;
 }
 
-const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt';
-const WINDOWS_PATH = '/window';
+const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt';
 const osType = os.type();
 function initClippingPath() {
     if (osType === 'Windows_NT') {
-        return path.resolve(__dirname, WINDOWS_PATH);
+        return getWindowPath();
     }
     else if (osType === 'Darwin') {
         return path.resolve(__dirname, MAC_PATH);
     }
-    throw new Error('unSupport os');
+    throw new Error('unSupport os');
+}
+function getWindowPath() {
+    for (let i = 1; i < 9; i++) {
+        const diskCode = String.fromCharCode('C'.charCodeAt(0) + i);
+        const _path = path.resolve(`${diskCode}:/documents/My Clippings.txt`);
+        const exist = fs.existsSync(_path);
+        if (exist)
+            return _path;
+    }
+    return 'unknown';
 }
 
 class Main {
