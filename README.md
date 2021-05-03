@@ -10,8 +10,8 @@
 > kindle-clipping is a minimalist JavaScript library to parse kindle clippings.txt to json, manage your note and highlight.
 
 
-- 4kb mini library
-- 简体中文 / English document support
+- 2kb mini library
+- 简体中文 / English language support
 - note & highlight merge
 - find clipping.txt automatically
 
