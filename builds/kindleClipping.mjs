@@ -115,7 +115,7 @@ function getWindowPath() {
     return 'unknown';
 }
 
-class Main {
+class KindleClippingCore {
     constructor(customPath = '') {
         this.clippingPath = customPath ? path.resolve(__dirname, customPath) : initClippingPath();
     }
@@ -126,5 +126,8 @@ class Main {
         return mergeNote(clippingParser(this.clippingPath));
     }
 }
+function kindleClipping(customPath) {
+    return new KindleClippingCore(customPath);
+}
 
-export default Main;
+export default kindleClipping;

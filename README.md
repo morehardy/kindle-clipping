@@ -38,14 +38,14 @@ const kindleClipping = require('kindle-clipping')
 
 ```javascript
 // get kindle clippings.txt by default path
-new kindleClipping()
+kindleClipping()
 
 // get kindle clippings.txt by custom path
-new kindleClipping(customPath)
+kindleClipping(customPath)
 ```
 #### getJson()
 ```javascript
-new kindleClipping().getJson() // get an array of unprocessed notes and highlight objects
+kindleClipping().getJson() // get an array of unprocessed notes and highlight objects
 // eg.
 // [
 //   {
@@ -60,7 +60,7 @@ new kindleClipping().getJson() // get an array of unprocessed notes and highligh
 ```
 #### getMergedJson()
 ```javascript
-new kindleClipping().getMergedJson() // getMergedJson returns an array of combined notes and annotation objects
+kindleClipping().getMergedJson() // getMergedJson returns an array of combined notes and annotation objects
 // eg.
 // [
 //   {

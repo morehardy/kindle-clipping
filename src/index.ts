@@ -4,7 +4,7 @@ import clippingPathInit from './methods/clippingPathInit'
 import path from 'path'
 import type { KindleClipping } from '../types'
 
-class Main implements KindleClipping {
+class KindleClippingCore implements KindleClipping {
     clippingPath: string
 
     constructor(customPath = '') {
@@ -22,4 +22,8 @@ class Main implements KindleClipping {
     }
 }
 
-export default Main
+function kindleClipping (customPath: string) {
+    return new KindleClippingCore(customPath)
+}
+
+export default kindleClipping
