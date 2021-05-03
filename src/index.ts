@@ -2,9 +2,9 @@ import clippingParser from './methods/clippingParser'
 import noteMerge from './methods/noteMerge'
 import clippingPathInit from './methods/clippingPathInit'
 import path from 'path'
-import type { KindleClippingParser } from '../types'
+import type { KindleClipping } from '../types'
 
-class Main implements KindleClippingParser {
+class Main implements KindleClipping {
     clippingPath: string
 
     constructor(customPath = '') {
