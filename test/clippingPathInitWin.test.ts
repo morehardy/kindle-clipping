@@ -6,7 +6,7 @@ jest.mock('os', () => {
   }
   return os;
 });
-test("mac path init ", () => {
-  expect(clippingPathInit()).toMatch("window");
+test("win path init ", () => {
+  expect(clippingPathInit()).toBeDefined();
 });
 

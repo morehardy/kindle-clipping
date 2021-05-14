@@ -1,14 +1,14 @@
-/* kindle clipping 1.0.3 MTI 2.0 */
+/* kindle clipping 1.0.4 MTI 2.0 */
 'use strict';
 
-var fs = require('fs');
 var os = require('os');
+var fs = require('fs');
 var path = require('path');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
 var os__default = /*#__PURE__*/_interopDefaultLegacy(os);
+var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
 var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
 
 const highlightRegex = /(Highlight|标注)/;
@@ -65,13 +65,8 @@ function lineParser(data) {
     };
 }
 
-function clippingParser(path) {
-    const exist = fs__default['default'].existsSync(path);
-    if (!exist) {
-        throw new Error(`${path} not exist!`);
-    }
-    const data = fs__default['default'].readFileSync(path);
-    const lines = data.toString('utf8').split('\n').slice(0, -1);
+function clippingParser(data) {
+    const lines = data.split('\n').slice(0, -1);
     const noteArr = [];
     while (lines.length > 0) {
         noteArr.push(lineParser(lines.splice(0, 5)));
@@ -105,14 +100,14 @@ const MAC_PATH = '/Volumes/Kindle/documents/My Clippings.txt';
 const osType = os__default['default'].type();
 function initClippingPath() {
     if (osType === 'Windows_NT') {
-        return getWindowPath();
+        return getWindowsPath();
     }
     else if (osType === 'Darwin') {
         return path__default['default'].resolve(__dirname, MAC_PATH);
     }
-    throw new Error('unSupport os');
+    throw new Error('unSupport os');
 }
-function getWindowPath() {
+function getWindowsPath() {
     for (let i = 1; i < 9; i++) {
         const diskCode = String.fromCharCode('C'.charCodeAt(0) + i);
         const _path = path__default['default'].resolve(`${diskCode}:/documents/My Clippings.txt`);
@@ -120,7 +115,16 @@ function getWindowPath() {
         if (exist)
             return _path;
     }
-    return 'unknown';
+    return 'path';
+}
+
+function dataFromPath(path) {
+    const exist = fs__default['default'].existsSync(path);
+    if (!exist) {
+        throw new Error(`${path} not exist, please make sure the kindle device is connected properly!`);
+    }
+    const data = fs__default['default'].readFileSync(path);
+    return data.toString('utf8');
 }
 
 class KindleClippingCore {
@@ -128,14 +132,17 @@ class KindleClippingCore {
         this.clippingPath = customPath ? path__default['default'].resolve(__dirname, customPath) : initClippingPath();
     }
     getJson() {
-        return clippingParser(this.clippingPath);
+        const noteData = dataFromPath(this.clippingPath);
+        return clippingParser(noteData);
     }
     getMergedJson() {
-        return mergeNote(clippingParser(this.clippingPath));
+        const noteData = dataFromPath(this.clippingPath);
+        return mergeNote(clippingParser(noteData));
     }
 }
 function kindleClipping(customPath) {
     return new KindleClippingCore(customPath);
 }
+// export clippingParser
 
 module.exports = kindleClipping;

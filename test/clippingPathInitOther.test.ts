@@ -11,7 +11,8 @@ test('unknown path init ', () => {
     try {
       clippingPathInit()
     } catch (e) {
-      throw Error(e)
+      console.log('1', typeof e)
+      throw new Error(e)
     }
   }).toThrowError('unSupport os')
 })

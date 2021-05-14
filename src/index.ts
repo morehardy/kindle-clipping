@@ -1,6 +1,7 @@
 import clippingParser from './methods/clippingParser'
 import noteMerge from './methods/noteMerge'
 import clippingPathInit from './methods/clippingPathInit'
+import dataFromPath from './methods/dataFromPath'
 import path from 'path'
 import type { KindleClipping } from '../types'
 
@@ -12,18 +13,21 @@ class KindleClippingCore implements KindleClipping {
     }
 
     getJson() {
-        return clippingParser(this.clippingPath)
+        const noteData = dataFromPath(this.clippingPath)
+        return clippingParser(noteData)
     }
 
     getMergedJson() {
+        const noteData = dataFromPath(this.clippingPath)
         return noteMerge(
-            clippingParser(this.clippingPath)
+            clippingParser(noteData)
         )
     }
 }
 
-function kindleClipping (customPath: string) {
+function kindleClipping (customPath?: string) {
     return new KindleClippingCore(customPath)
 }
 
 export default kindleClipping
+// export clippingParser

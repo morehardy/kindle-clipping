@@ -27,7 +27,6 @@ declare namespace kindleClipping {
     note: string
   }
 
-
   export function TextParse(string): Note[]
 
   export class KindleClipping {
@@ -50,8 +49,10 @@ declare namespace kindleClipping {
      */
     public getMergedJson: () => (NoteMerged | Note)[]
   }
+
+  export function clippingParser(string): Note[]
 }
 
 declare function kindleClipping(clippingPath?: string): kindleClipping.KindleClipping
-
+export function clippingParser(string): Note[]
 export = kindleClipping
