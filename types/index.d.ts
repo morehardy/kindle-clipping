@@ -54,5 +54,4 @@ declare namespace kindleClipping {
 }
 
 declare function kindleClipping(clippingPath?: string): kindleClipping.KindleClipping
-export function clippingParser(string): Note[]
 export = kindleClipping

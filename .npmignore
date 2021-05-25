@@ -1,0 +1,21 @@
+# OSX
+.DS_Store
+
+# IDE
+.idea
+
+# npm
+node_modules
+package-lock.json
+
+# jest
+coverage
+
+# dev
+src
+test
+babel.config.js
+.prettierrc
+
+#other
+.github
