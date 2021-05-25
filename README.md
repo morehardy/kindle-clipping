@@ -12,8 +12,9 @@
 
 - 2kb mini library
 - 简体中文 / English language support
-- note & highlight merge
 - find clipping.txt automatically
+- note & highlight merge
+- clipping string parse
 
 ## Getting Started
 
@@ -40,13 +41,14 @@ const kindleClipping = require('kindle-clipping')
 // get kindle clippings.txt by default path
 kindleClipping()
 
-// get kindle clippings.txt by custom path
-kindleClipping(customPath)
+// get kindle clippings.txt by custom path, customPath must be an absolute path.
+kindleClipping(customPath)// eg. kindleClipping(Path.resolve([path]))
 ```
 #### getJson()
+get an array of unprocessed notes and highlight objects
 ```javascript
-kindleClipping().getJson() // get an array of unprocessed notes and highlight objects
 // eg.
+kindleClipping().getJson()
 // [
 //   {
 //     bookName: 'a book',
@@ -59,9 +61,10 @@ kindleClipping().getJson() // get an array of unprocessed notes and highlight ob
 // ]
 ```
 #### getMergedJson()
+getMergedJson returns an array of combined notes and annotation objects
 ```javascript
-kindleClipping().getMergedJson() // getMergedJson returns an array of combined notes and annotation objects
 // eg.
+kindleClipping().getMergedJson()
 // [
 //   {
 //     bookName: 'Mindset (Carol Dweck)',
@@ -72,6 +75,42 @@ kindleClipping().getMergedJson() // getMergedJson returns an array of combined n
 //     date: 'Friday, February 19, 2021 6:06:48 PM',
 //     note: 'is a note',
 //     content: 'highlight content'
+//   }
+// ]
+```
+
+#### clippingParser(clippingString)
+parses clipping string to a nested array of note and highlight
+```javascript
+// eg.
+let clippingString =  `Mindset (Carol Dweck)
+      - Your Highlight on page 37 | Location 565-565 | Added on Friday, February 19, 2021 6:06:48 PM
+      
+      As a contrast, let’s look
+      ==========
+      Mindset (Carol Dweck)
+      - Your Note on page 37 | Location 565-565 | Added on Friday, February 19, 2021 6:06:48 PM
+      
+      excellence—whose greatness
+      ==========`
+
+kindleClipping.clippingParser(clippingString)
+// [
+//   {
+//     bookName: 'Mindset (Carol Dweck)',
+//     content: 'As a contrast, let’s look',
+//     type: 'Highlight',
+//     page: '37',
+//     location: '565',
+//     date: 'Friday, February 19, 2021 6:06:48 PM'
+//   },
+//   {
+//     bookName: 'Mindset (Carol Dweck)',
+//     content: 'excellence—whose greatness',
+//     type: 'Note',
+//     page: '37',
+//     location: '565',
+//     date: 'Friday, February 19, 2021 6:06:48 PM'
 //   }
 // ]
 ```
