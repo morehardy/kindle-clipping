@@ -28,6 +28,5 @@ class KindleClippingCore implements KindleClipping {
 function kindleClipping (customPath?: string) {
     return new KindleClippingCore(customPath)
 }
-
+kindleClipping.clippingParser = clippingParser
 export default kindleClipping
-// export clippingParser

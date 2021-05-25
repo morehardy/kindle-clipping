@@ -6,7 +6,7 @@ function clippingParser(data: string): Note[] {
     const noteArr = []
 
     while (lines.length > 0) {
-        noteArr.push(lineParser(lines.splice(0, 5)))
+        noteArr.push(lineParser(lines.splice(0, 5).map(el => el.trim())))
     }
     return noteArr
 }

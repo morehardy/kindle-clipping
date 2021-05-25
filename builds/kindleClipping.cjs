@@ -69,7 +69,7 @@ function clippingParser(data) {
     const lines = data.split('\n').slice(0, -1);
     const noteArr = [];
     while (lines.length > 0) {
-        noteArr.push(lineParser(lines.splice(0, 5)));
+        noteArr.push(lineParser(lines.splice(0, 5).map(el => el.trim())));
     }
     return noteArr;
 }
@@ -143,6 +143,6 @@ class KindleClippingCore {
 function kindleClipping(customPath) {
     return new KindleClippingCore(customPath);
 }
-// export clippingParser
+kindleClipping.clippingParser = clippingParser;
 
 module.exports = kindleClipping;
